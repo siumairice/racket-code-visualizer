@@ -13,6 +13,7 @@ function HomePage() {
         </a>
       </div>
       <h1>Racket Tree Visualizer</h1>
+      <br></br>
       <button className="btn" onClick={() => navigate('visualize')}>Start Visualizing</button>
       
     </>

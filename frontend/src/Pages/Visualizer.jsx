@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../App.css'
-import { Button } from '@mui/material';
+import { Button, Box } from '@mui/material';
+import TreeCanvas from './TreeCanvas';
+
 
 function Visualizer() {
   const [code, setCode] = useState([]);
@@ -25,6 +27,7 @@ function Visualizer() {
 
   return (
     <>
+    <Box sx={{ display:'flex', gap:'2rem' }}>
     <form method="post" onSubmit={handleSubmit}>
         <p>
           Paste in your data structure definition.
@@ -48,17 +51,21 @@ function Visualizer() {
         <br></br>
         <Button type="submit" variant="outlined">Generate</Button>
     </form>
+    <TreeCanvas nestedArray={code}/>
+   </Box>
     </>
   )
 }
+
 let dataStruct = { 
     LEFT: 0,
-    RIGHT: 1,
-    KEY: 2,
+    RIGHT: 2,
+    KEY: 1,
 }
 
+//implement a function that takes in the struct 
 function parseStringtoTree(inputData){
-    // parse data structure into form above
+    // parse data structure from form above
     let inputStr = inputData.code
     const stack = [];
     const result = [];
@@ -88,6 +95,5 @@ function parseStringtoTree(inputData){
     
     return result;
 }
-      
 
 export default Visualizer
